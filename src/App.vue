@@ -64,7 +64,14 @@ const lookupStock = async () => {
           frequency: latest.frequency,
           declarationDate: latest.declarationDate,
       }
-      stockData.value.unshift(stock)
+      // Prevent duplicates
+      const alreadyExists = stockData.value.some(s => s.ticker === stock.ticker)
+      if (!alreadyExists) {
+        stockData.value.unshift(stock)
+      } else {
+        alert(`Ticker ${stock.ticker} is already in the table.`)
+      }
+     
     } else {
       alert('Stock not found or no data available.')
     }
