@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 📈 Stock Dividend Lookup App
 
 A simple Vue.js app to look up dividend information for publicly traded stocks using the [Financial Modeling Prep API](https://financialmodelingprep.com/).
@@ -79,3 +80,7 @@ AAPL, TSLA, MSFT, AMZN, NVDA, GOOGL, META, JPM, V, AMD, PFE, DIS, T, KO, INTC, C
 
 ## 💬 Feedback
 Feel free to fork, tweak, or suggest improvements!
+=======
+# stocks-and-dividends
+A little app to look up stocks and retrieve information such as the dividend schedule.
+>>>>>>> f9a63fbe762470dd7cd30453d792957ec016aa08
