@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 📈 Stock Dividend Lookup App
 
 A simple Vue.js app to look up dividend information for publicly traded stocks using the [Financial Modeling Prep API](https://financialmodelingprep.com/).
@@ -50,10 +49,18 @@ Open your browser and go to http://localhost:5173.
 
 ## 📦 Features
 
-- 🔍 Lookup stock dividend data
-- 📋 Copy and manage your API key securely in the browser
-- 🙈 Toggle API key visibility
-- 💡 Persistent tips for configuration and usage
+- 🔍 Lookup Stock Dividend Data: Enter a ticker symbol to retrieve dividend information.
+- 📋 Secure API Key Management:
+    - 📋 Copy and manage your API key securely in the browser
+    - 🙈 Toggle API key visibility
+    - 💡 Persistent tips for configuration and usage
+- 💬 Error Handling: Clear error messages if an invalid ticker or API error occurs.
+- 🧹 Input Management: Clear input fields easily after lookups.
+- 📋 Historical Dividend Display: Edit Modal popup shows detailed dividend history.
+- 🖱️ Scrollable Modal: Modal automatically scrolls on small screens to avoid overflowing.
+- ✅ User-Friendly UX: 
+    - Reminders for .env setup.
+    - Safe API key practices encouraged.
 
 
 ## 🧪 Example Stocks (Free Tier)
@@ -63,6 +70,9 @@ The API supports a limited set of tickers on the free tier. Some popular ones:
 ```r
 AAPL, TSLA, MSFT, AMZN, NVDA, GOOGL, META, JPM, V, AMD, PFE, DIS, T, KO, INTC, COST
 ```
+
+💡 Tip: If you have a paid tier version of the API then you'll have access to more tickers.
+
 
 ## 📁 Project Structure
 
@@ -80,7 +90,3 @@ AAPL, TSLA, MSFT, AMZN, NVDA, GOOGL, META, JPM, V, AMD, PFE, DIS, T, KO, INTC, C
 
 ## 💬 Feedback
 Feel free to fork, tweak, or suggest improvements!
-=======
-# stocks-and-dividends
-A little app to look up stocks and retrieve information such as the dividend schedule.
->>>>>>> f9a63fbe762470dd7cd30453d792957ec016aa08
