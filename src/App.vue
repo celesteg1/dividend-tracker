@@ -54,6 +54,8 @@ const lookupStock = async () => {
       const exDivDate = new Date(recordDate)
       exDivDate.setDate(recordDate.getDate() - 1)
       
+
+      
       const stock = {
           ticker: latest.symbol,
           dividendYield: `${latest.yield.toFixed(2)}%`,
@@ -63,6 +65,7 @@ const lookupStock = async () => {
           paymentDate: latest.paymentDate,
           frequency: latest.frequency,
           declarationDate: latest.declarationDate,
+         
       }
       // Prevent duplicates
       const alreadyExists = stockData.value.some(s => s.ticker === stock.ticker)
@@ -80,6 +83,45 @@ const lookupStock = async () => {
     alert('Failed to fetch stock data.')
   }
 }
+  const refreshStocks = async () => {
+
+    try{
+
+      for (let i=0; i<stockData.value.length; i++) {
+        const symbol = stockData.value[i].ticker
+        const url = `https://financialmodelingprep.com/stable/dividends?symbol=${symbol}&apikey=${apiKey.value}`
+        const response = await axios.get(url)
+
+        if (response.data && response.data.length > 0) {
+          const latest = response.data[0]
+          const recordDate = new Date(latest.recordDate)
+          const exDivDate = new Date(recordDate)
+          exDivDate.setDate(recordDate.getDate() - 1)
+          const now = new Date();
+
+          stockData.value[i] = {
+            ticker: latest.symbol,
+            dividendYield: `${latest.yield.toFixed(2)}%`,
+            dividendAmount: `$${latest.dividend.toFixed(2)}`,
+            computedExDivDate: exDivDate.toISOString().split('T')[0],
+            recordDate: latest.recordDate,
+            paymentDate: latest.paymentDate,
+            frequency: latest.frequency,
+            declarationDate: latest.declarationDate,
+            lastRefreshed: now.toISOString().split('T')[0] + ' ' + now.toLocaleTimeString().split(' ')[0], // "YYYY-MM-DD HH:MM:SS"
+
+
+          }
+        }
+      }
+
+    } catch (error) {
+      console.error('Error refreshing stock data:', error)
+      alert('Failed to refresh one or more stocks.')
+    }
+
+  }
+
 </script>
 
 
@@ -111,6 +153,11 @@ const lookupStock = async () => {
       <button @click="lookupStock">Lookup</button>
     </div>
 
+    <!-- Refresh all dividend data in table-->
+     <div>
+     <button @click="refreshStocks" :disabled="stockData.length === 0">🔄 Refresh All</button>
+     </div>
+
     <!-- Table to Display Stock Info -->
     <table v-if="stockData.length > 0">
       <thead>
@@ -123,6 +170,7 @@ const lookupStock = async () => {
           <th>Record Date</th>
           <th>Next Payout Date</th>
           <th>Payment Frequency</th>
+          <th>Last Refreshed</th>
           
           <!-- Add more columns as needed -->
         </tr>
@@ -137,7 +185,7 @@ const lookupStock = async () => {
           <td>{{ stock.recordDate }}</td>
           <td>{{ stock.paymentDate }}</td>
           <td>{{ stock.frequency }}</td>
-          
+          <td>{{ stock.lastRefreshed }}</td>
         </tr>
       </tbody>
     </table>
