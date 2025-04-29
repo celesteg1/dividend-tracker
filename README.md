@@ -1,5 +1,9 @@
 # 📈 Stock Dividend Lookup App
 
+![Version](https://img.shields.io/github/v/release/celesteg1/dividend-tracker)
+![License: MIT](https://img.shields.io/github/license/celesteg1/dividend-tracker)
+![Last Commit](https://img.shields.io/github/last-commit/celesteg1/dividend-tracker)
+
 A simple Vue.js app to look up dividend information for publicly traded stocks using the [Financial Modeling Prep API](https://financialmodelingprep.com/).
 
 ---
@@ -9,8 +13,8 @@ A simple Vue.js app to look up dividend information for publicly traded stocks u
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/celesteg1/stocks-and-dividends.git
-cd stocks-and-dividends
+git clone https://github.com/celesteg1/dividend-tracker.git
+cd dividend-tracker
 ```
 
 ### 2. Install Dependencies
@@ -44,7 +48,7 @@ VITE_API_KEY=your_actual_key_here
 npm run dev
 ```
 
-Open your browser and go to http://localhost:5173.
+Open your browser and go to http://localhost:5173 .
 
 
 ## 📦 Features
